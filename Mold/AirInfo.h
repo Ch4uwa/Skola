@@ -14,8 +14,8 @@ public:
 	~AirInfo();
 
 	// Methods
-	//void printInfo();
-
+	static void printInfo(std::vector<AirInfo>&);
+	//TODO Print temp/day humidity/day
 
 	// Accessors
 	inline std::string getTemp()const { return this->temp; }

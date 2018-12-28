@@ -16,3 +16,16 @@ AirInfo::~AirInfo()
 {
 }
 
+void AirInfo::printInfo(std::vector<AirInfo>& a)
+{
+	for (auto& info : a)
+	{
+		std::cout << "Date: " << info.getDate() << "\n"
+			<< "Time: " << info.getTime() << "\n"
+			<< "Placement: " << info.getPlace() << "\n"
+			<< "Temp: " << info.getTemp() << " Celsius\n"
+			<< "Humidity: " << info.getHumidity() << "%\n";
+		getchar();
+	}
+}
+

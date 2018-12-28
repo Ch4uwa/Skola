@@ -6,7 +6,8 @@ class FileHandling
 {
 private:
 public:
-	std::vector<AirInfo> vData; // TODO Put as private
+	std::vector<AirInfo> vDataInside; // TODO Put as private
+	std::vector<AirInfo> vDataOutside; // TODO Put as private
 	FileHandling(std::string& filename);
 	~FileHandling();
 
