@@ -10,12 +10,15 @@
 
 int main()
 {
-	std::string filename{"TempFuktData2.csv"};
-	FileHandling F(filename);
+	//std::string filename{"TempFuktData2.csv"};
+	//FileHandling F(filename);
 	//AirInfo::printInfo(F.vDataInside);
-	AirInfo::printInfo(F.vDataOutside);
-	
+	//FileHandling::printInfo(F.vDataOutside);
+	//F.infoDayInside();
+
+
 
 	
 	std::cin.get();
 }
+

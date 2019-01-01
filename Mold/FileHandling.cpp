@@ -35,6 +35,29 @@ FileHandling::FileHandling(std::string& filename)
 	inFile.close();
 }
 
+void FileHandling::printInfo(const std::vector<AirInfo>& vData)
+{
+	for (const auto& info : vData)
+	{
+		std::cout << "Placement: " << info.getPlace() << "\n"
+			<< "Date: " << info.getDate() << " "
+			<< "Time: " << info.getTime() << "\n"
+			<< "Temp: " << info.getTemp() << " "
+			<< "Humidity: " << info.getHumidity() << "%\n";
+		getchar();
+	}
+}
+
+// TODO Print function that prints average value's, place and date
+
+void FileHandling::avgInfo()
+{
+	// TODO take temp and humidity value's of same date and divide by number of entries
+
+}
+
+
+
 FileHandling::~FileHandling()
 {
 }
