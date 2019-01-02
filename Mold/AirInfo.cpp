@@ -9,7 +9,7 @@ AirInfo::AirInfo(std::string fileContent)
 	getline(airStream, this->time, ';');
 	getline(airStream, this->place, ';');
 	getline(airStream, this->temp, ';');
-	getline(airStream, this->humidity, ';');
+	getline(airStream, this->humidity);
 }
 
 AirInfo::~AirInfo()

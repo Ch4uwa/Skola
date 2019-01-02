@@ -6,14 +6,21 @@ FileHandling::FileHandling(std::string& filename)
 {
 	std::string fileContent;
 	std::ifstream inFile(filename);
+
 	if (inFile.is_open())
 	{
-		while (!inFile.eof())
-		{
-			getline(inFile, fileContent);
-
-			AirInfo info(fileContent);
-			vData.emplace_back(info);
+		while (!getline(inFile, fileContent).eof())
+		{	
+			int n = fileContent.find('Inne');
+			if (n)
+			{
+				AirInfo info(fileContent);
+				vData.emplace_back(info);
+			}
+			else
+			{
+				std::cout << "meee";
+			}
 		}
 	}
 	inFile.close();

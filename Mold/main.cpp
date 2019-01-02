@@ -18,7 +18,7 @@ int main()
 {
 	std::string filename{"TempFuktData2.csv"};
 	FileHandling F(filename);
-	for (auto& info : F.vData)
+	for (auto info : F.vData)
 	{
 		printInfo(info);
 		std::cin.get();

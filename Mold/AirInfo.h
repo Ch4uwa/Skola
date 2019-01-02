@@ -14,7 +14,7 @@ public:
 	~AirInfo();
 
 	// Methods
-	//void printInfo();
+	//TODO void printInfo();
 
 
 	// Accessors
