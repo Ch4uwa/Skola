@@ -9,7 +9,8 @@ int main()
 {
 	FileIO file;
 	file.readFile("TempFuktData2.csv");
-	file.avgValues();
+	//file.printInAvgV();
+	file.printOutAvgV();
 	//file.printInsideV();
 	//file.printOutsideV();
 	/*Program P;

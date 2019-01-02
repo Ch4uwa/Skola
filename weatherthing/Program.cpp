@@ -38,6 +38,8 @@ FileIO::FileIO()
 	LOG("FileIO ctor");
 	vInside.reserve(100000);
 	vOutside.reserve(100000);
+	vInAvg.reserve(365);
+	vOutAvg.reserve(365);
 }
 
 void FileIO::readFile(const std::string & filename)
@@ -67,33 +69,42 @@ void FileIO::readFile(const std::string & filename)
 	inFile.close();
 	std::cout << "Done reading " << filename << " #" << countInne << " inside sensor's and #"
 		<< countUte << " outside sensor's\n";
+	avgValues(vInside, vInAvg);
+	avgValues(vOutside, vOutAvg);
 }
 
-void FileIO::avgValues()
+void FileIO::avgValues(std::vector<Info>& fromV, std::vector<AvgInfo>& toV)
 {
-	int v{};
-
+	std::string someDate{ fromV[0].getDate() };
+	float avgtemp{ 0 }, avghumid{ 0 };
+	int count{ 0 }, v{ 0 }, j{ 0 };
+	auto itr = fromV.begin();
 	do
 	{
-		while (vInside[v].getDate() == vInside[v + 1].getDate())
+		while ((*itr).getDate() == someDate)
 		{
-			std::cout << vInside[v].getDate() << "\n";
-			v++;
+			avgtemp += stof((*itr).getTemperature());
+			avghumid += stof((*itr).getHumidity());
+
+			count++;
+			itr++;
 		}
-		std::cin.get();
-		v++;
-	} while (v < vInside.size());
 
 
-	//std::vector<Info>::iterator it;
-	/*for (it = vInside.begin(); it < vInside.end(); ++it)
-	{
-		if ((*it).getDate() == (*(it + 1)).getDate())
-		{
-			std::cout << (*it).getDate() << "\n";
-		}
-	}*/
+		avgtemp = (avgtemp / count);
+		avghumid = (avghumid / count);
+		AvgInfo avginfo(someDate, avgtemp, avghumid);
+		toV.emplace_back(avginfo);
+		someDate = (*itr).getDate();
+		avgtemp = 0;
+		avghumid = 0;
+		count = 0;
+		
+
+		
+	} while (itr != fromV.end());
 }
+
 
 bool FileIO::findSubString(const std::string & findIn, const std::string & toFind)
 {
@@ -119,7 +130,23 @@ void FileIO::printOutsideV()
 	for (const auto& n : vOutside)
 	{
 		std::cout << n.printInfo();
-		std::cin.get();
+		//std::cin.get();
 	}
 	std::cout << "\n" << countUte << "# Outside Sensor's\n";
+}
+
+void FileIO::printOutAvgV()
+{
+	for (const auto& n : vOutAvg)
+	{
+		std::cout << "Outside " << n.infoToString();
+	}
+}
+
+void FileIO::printInAvgV()
+{
+	for (const auto& n : vInAvg)
+	{
+		std::cout << "Inside " << n.infoToString();
+	}
 }
