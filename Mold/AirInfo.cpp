@@ -2,7 +2,7 @@
 
 
 
-AirInfo::AirInfo(std::string fileContent)
+AirInfo::AirInfo(std::string& fileContent)
 {
 	std::istringstream airStream(fileContent);
 	getline(airStream, this->date, ' ');
@@ -14,5 +14,15 @@ AirInfo::AirInfo(std::string fileContent)
 
 AirInfo::~AirInfo()
 {
+}
+
+float AirInfo::getAvgTemp() const
+{
+	return 0.0f;
+}
+
+float AirInfo::getAvgHumid() const
+{
+	return 0.0f;
 }
 

@@ -10,14 +10,15 @@ private:
 	std::string place;
 	std::string date;
 public:
-	AirInfo(std::string fileContent);
+	AirInfo(std::string& fileContent);
 	~AirInfo();
 
-	// Methods
-	//TODO void printInfo();
+	
 
 
 	// Accessors
+	float getAvgTemp() const;
+	float getAvgHumid() const;
 	inline std::string getTemp()const { return this->temp; }
 	inline std::string getHumidity()const { return this->humidity; }
 	inline std::string getTime()const { return this->time; }
